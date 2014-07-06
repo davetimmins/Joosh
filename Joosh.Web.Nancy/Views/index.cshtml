@@ -1,0 +1,32 @@
+﻿@{
+    Layout = "layout.cshtml";
+}
+@section styles {
+    <link rel="stylesheet" href="//yui.yahooapis.com/pure/0.5.0/pure-min.css" />
+    <link rel="stylesheet" href="//js.arcgis.com/3.9/js/esri/css/esri.css" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/styles.css" rel="stylesheet" />
+}
+<div class="header" role="banner">
+    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+        <h1><a class="pure-menu-heading" href="@Url.Content("~/")">ArcGIS Config Sample</a></h1>
+        <ul>
+            <li><a href="#modal-info" title="Information"><i class="fa fa-info-circle fa-2x summary-img"></i></a></li>
+        </ul>
+    </div>
+</div>
+<div id="map" class="map" role="main">
+    <div id="home-button"></div>
+    <div id="locate-button"></div>
+</div>
+<div id="geocoder"></div>
+@Html.Partial("_modal")
+@section scripts {
+    <script type="text/javascript">
+        var config = {
+            contextPath: '@Url.Content("~").TrimEnd('/')'
+        };
+    </script>
+    <script src="//js.arcgis.com/3.9compact/"></script>
+    <script src="~/scripts.js"></script>
+}

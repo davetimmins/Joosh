@@ -1,0 +1,178 @@
+﻿html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+}
+
+a {
+    color: #3399f3;
+    text-decoration: none;
+}
+
+    a:hover, a:focus {
+        color: #3399f3;
+        text-decoration: underline;
+    }
+
+    a:focus {
+        outline: thin dotted;
+        outline: 5px auto -webkit-focus-ring-color;
+        outline-offset: -2px;
+    }
+
+html, button, input, select, textarea {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 1em;
+}
+
+
+.home-menu h1 {
+    float: left;
+    margin: 0;
+    vertical-align: baseline;
+    height: 100px;
+}
+
+.pure-menu .pure-menu-heading {
+    text-transform: none;
+}
+
+.home-menu span {
+    float: left;
+    vertical-align: middle;
+}
+
+.home-menu ul {
+    float: right;
+    vertical-align: baseline;
+}
+
+@media (max-width: 30em) {
+    .summary-img {
+        display: none;
+    }
+}
+
+.map {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 100px;
+    height: calc(100% - 100px);
+}
+
+#home-button {
+    position: absolute;
+    top: 95px;
+    left: 20px;
+    z-index: 50;
+}
+
+#locate-button {
+    position: absolute;
+    top: 140px;
+    left: 20px;
+    z-index: 50;
+}
+
+#geocoder {
+    position: absolute;
+    top: 120px;
+    left: 60px;
+    z-index: 50;
+}
+
+.simpleGeocoder .esriGeocoder input {
+    font-size: 1em;
+    line-height: 1em;
+    width: calc(100% - 65px);
+}
+
+    .simpleGeocoder .esriGeocoder input::-ms-clear {
+        display: none;
+    }
+
+.simpleGeocoder .esriGeocoderContainer {
+    width: 300px;
+    min-width: 220px;
+    font-size: 1em;
+    line-height: 1.2em;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+.simpleGeocoder .esriGeocoderIcon {
+    margin: 0.5em 0 0.5em 0.5em;
+    height: auto;
+    width: auto;
+}
+
+.simpleGeocoder .esriGeocoder .esriGeocoderSearch {
+    background: none;
+}
+
+    .simpleGeocoder .esriGeocoder .esriGeocoderSearch:before {
+        font-family: FontAwesome;
+        content: '\f002';
+        color: #808080;
+    }
+
+.simpleGeocoder .esriGeocoderHasValue .esriGeocoderReset {
+    background: none;
+}
+
+    .simpleGeocoder .esriGeocoderHasValue .esriGeocoderReset:before {
+        font-family: FontAwesome;
+        content: '\f146';
+        color: #f00;
+    }
+
+.simpleGeocoder .esriGeocoderLoading .esriGeocoderReset {
+    background: none;
+}
+
+    .simpleGeocoder .esriGeocoderLoading .esriGeocoderReset:before {
+        font-family: FontAwesome;
+        content: '\f110';
+        color: #3399f3;
+        -webkit-animation: spin 2s infinite linear;
+        -moz-animation: spin 2s infinite linear;
+        -o-animation: spin 2s infinite linear;
+        animation: spin 2s infinite linear;
+    }
+
+.HomeButton .home {
+    background: none;
+}
+
+    .HomeButton .home:hover {
+        background: none;
+    }
+
+    .HomeButton .home:before {
+        font-family: FontAwesome;
+        font-size: 1.8em;
+        content: '\f015';
+        color: #808080;
+    }
+
+.LocateButton .zoomLocateButton {
+    background: none;
+}
+
+    .LocateButton .zoomLocateButton:hover {
+        background: none;
+    }
+
+    .LocateButton .zoomLocateButton:before {
+        font-family: FontAwesome;
+        font-size: 1.8em;
+        content: '\f124';
+        color: #808080;
+    }

@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Model", "Web.ArcGIS.Config.Model\Joosh.Model.csproj", "{130892AD-CA91-4E4A-A284-A367B0892112}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Nancy.MapConfig", "Joosh.Interface.Nancy\Joosh.Nancy.MapConfig.csproj", "{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Web.Nancy", "Joosh.Web.Nancy\Joosh.Web.Nancy.csproj", "{5B543C77-C124-4424-8B51-9B0D2915AB57}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Nancy.UnifiedSearch", "Joosh.Nancy.UnifiedSearch\Joosh.Nancy.UnifiedSearch.csproj", "{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{130892AD-CA91-4E4A-A284-A367B0892112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{130892AD-CA91-4E4A-A284-A367B0892112}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{130892AD-CA91-4E4A-A284-A367B0892112}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{130892AD-CA91-4E4A-A284-A367B0892112}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B543C77-C124-4424-8B51-9B0D2915AB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B543C77-C124-4424-8B51-9B0D2915AB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B543C77-C124-4424-8B51-9B0D2915AB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B543C77-C124-4424-8B51-9B0D2915AB57}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

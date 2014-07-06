@@ -1,0 +1,13 @@
+{
+"id":1,
+"role":"basemap",
+"options":{"logo":false},
+"extent":{"xmin":1704801.74988085,"ymin":5404709.59555674,"xmax":1789799.31570931,"ymax":5454517.50767256,
+	"spatialReference":{"wkid":2193}},
+"geometryServiceUrl":"http://services.arcgisonline.co.nz/arcgis/rest/services/Utilities/Geometry/GeometryServer",
+"layers":[
+	{"type":"ArcGISTiledMapServiceLayer",
+	"url":"http://services.arcgisonline.co.nz/arcgis/rest/services/Generic/newzealand/MapServer"}
+	]
+}
+	
