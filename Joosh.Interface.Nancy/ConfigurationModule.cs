@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Joosh.Nancy.MapConfig.Interface
+namespace Joosh.MapConfig
 {
     public class ConfigurationModule : NancyModule
     {

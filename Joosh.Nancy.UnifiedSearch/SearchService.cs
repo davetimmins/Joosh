@@ -14,7 +14,7 @@ using System.Threading;
 using System.Diagnostics;
 using System.Collections.Concurrent;
 
-namespace Joosh.Nancy.UnifiedSearch.Interface
+namespace Joosh.UnifiedSearch
 {
     public class SearchModule : NancyModule
     {
@@ -148,7 +148,7 @@ namespace Joosh.Nancy.UnifiedSearch.Interface
             if (!String.IsNullOrWhiteSpace(outSR))
             {
                 var sr = JsonSerializer.DeserializeFromString<SpatialReference>(outSR);
-                wkid = sr.LatestWkid;
+                wkid = sr.LatestWkid ?? sr.Wkid;
             }
             if (String.IsNullOrWhiteSpace(queryString)) return null;
 

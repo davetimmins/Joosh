@@ -1,7 +1,7 @@
 ﻿using Nancy;
 using System;
 
-namespace Joosh.Web.Nancy.Modules
+namespace Joosh.Web.Modules
 {
     public class HomeModule : NancyModule
     {

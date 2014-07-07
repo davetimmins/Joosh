@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Joosh.Web.Nancy</RootNamespace>
-    <AssemblyName>Joosh.Web.Nancy</AssemblyName>
+    <RootNamespace>Joosh.Web</RootNamespace>
+    <AssemblyName>Joosh.Web</AssemblyName>
     <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -100,13 +100,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Modules\HomeModule.cs" />
+    <Compile Include="CustomStatusCode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <Content Include="Views\layout.cshtml" />
-    <Content Include="Views\index.cshtml" />
+    <Content Include="Views\layout.cshtml">
+      <BrowseToURL>~/</BrowseToURL>
+    </Content>
+    <Content Include="Views\index.cshtml">
+      <BrowseToURL>~/</BrowseToURL>
+    </Content>
     <Content Include="content\Web.config" />
     <Content Include="images\Web.config" />
     <Content Include="Json\basemap.json">
@@ -118,7 +123,13 @@
     <Content Include="Json\searchConfig.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\_modal.cshtml" />
+    <Content Include="Views\_modal.cshtml">
+      <BrowseToURL>~/</BrowseToURL>
+    </Content>
+    <Content Include="Views\Codes\404.cshtml">
+      <BrowseToURL>~/</BrowseToURL>
+    </Content>
+    <Content Include="Views\Codes\500.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -127,13 +138,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Joosh.Interface.Nancy\Joosh.Nancy.MapConfig.csproj">
+    <ProjectReference Include="..\Joosh.Interface.Nancy\Joosh.MapConfig.csproj">
       <Project>{0c73a276-1a6f-4526-b9e8-1fd77c02bbaf}</Project>
-      <Name>Joosh.Nancy.MapConfig</Name>
+      <Name>Joosh.MapConfig</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Joosh.Nancy.UnifiedSearch\Joosh.Nancy.UnifiedSearch.csproj">
+    <ProjectReference Include="..\Joosh.Nancy.UnifiedSearch\Joosh.UnifiedSearch.csproj">
       <Project>{b3d19bff-bc0c-40ee-bd88-04083469d1f1}</Project>
-      <Name>Joosh.Nancy.UnifiedSearch</Name>
+      <Name>Joosh.UnifiedSearch</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
@@ -149,7 +160,7 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53495</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:63037/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

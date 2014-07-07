@@ -3,6 +3,5 @@
 "findSearches":[
 	{"endpoint":"http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer","searchFields":[],"layerIds":[0]}
 ],
-"returnFields":["CITY_NAME"],
-"outputWkid":102100
+"returnFields":["CITY_NAME"]
 }

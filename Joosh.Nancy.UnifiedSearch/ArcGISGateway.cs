@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using ServiceStack.Text;
 
-namespace Joosh.Nancy.UnifiedSearch
+namespace Joosh.UnifiedSearch
 {
     internal sealed class ArcGISGateway : PortalGateway
     {
