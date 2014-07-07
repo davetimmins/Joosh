@@ -13,7 +13,22 @@
     "esri/symbols/SimpleLineSymbol",
     "esri/symbols/SimpleMarkerSymbol",
     "esri/InfoTemplate"],
-    function (lang, declare, array, all, on, domConstruct, dom, Query, QueryTask, Popup, SimpleFillSymbol, SimpleLineSymbol, SimpleMarkerSymbol, InfoTemplate) {
+    function (
+        lang,
+        declare,
+        array,
+        all,
+        on,
+        domConstruct,
+        dom,
+        Query,
+        QueryTask,
+        Popup,
+        SimpleFillSymbol,
+        SimpleLineSymbol,
+        SimpleMarkerSymbol,
+        InfoTemplate
+    ) {
         return declare("joosh.PopupManager", null, {
             map: null,
             opLayers: null,

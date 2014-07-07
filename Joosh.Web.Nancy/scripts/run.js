@@ -20,6 +20,6 @@
             return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
         }
 
-        MapManager.loadFromService(getParameterByName('map') || 'default');
+        new MapManager().loadFromService(getParameterByName('map') || 'default');
     });
 }).call(this);
