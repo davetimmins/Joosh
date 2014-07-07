@@ -20,6 +20,7 @@ namespace Joosh.UnifiedSearch
     {
         readonly IRootPathProvider _pathProvider;
         static ConcurrentDictionary<String, ArcGISGateway> _arcGISGateways = new ConcurrentDictionary<String, ArcGISGateway>();
+        ConcurrentDictionary<String, Joosh.Model.SearchConfigurationData> _configurationData = new ConcurrentDictionary<String, Joosh.Model.SearchConfigurationData>();
 
         public SearchModule(IRootPathProvider pathProvider)
         {
@@ -200,11 +201,18 @@ namespace Joosh.UnifiedSearch
 
         Joosh.Model.SearchConfigurationData CheckConfig()
         {
+            Joosh.Model.SearchConfigurationData result;
+            // currently only supporting one config but just in case we expand in the future
+            if (_configurationData.TryGetValue("searchConfig", out result)) return result;
+
             System.Diagnostics.Debug.WriteLine("Loading search configuration from file");
             var configFile = new FileInfo(Path.Combine(_pathProvider.GetRootPath(), "bin", "Json", "searchConfig.json"));
             if (!configFile.Exists) throw new FileNotFoundException(configFile.Name);
             String json = File.ReadAllText(configFile.FullName);
-            return JsonSerializer.DeserializeFromString<Joosh.Model.SearchConfigurationData>(json);
+            result = JsonSerializer.DeserializeFromString<Joosh.Model.SearchConfigurationData>(json);
+            if (_configurationData.TryAdd("searchConfig", result)) return result;
+
+            return null;
         }
 
         ArcGISGateway ResolveArcGISGateway(String url)
