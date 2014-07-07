@@ -6,12 +6,12 @@
         parseOnLoad: true,
         packages: [
         {
-            name: 'eagle',
-            location: config.contextPath + '/scripts/eagle',
+            name: 'joosh',
+            location: appConfig.contextPath + '/scripts/joosh',
         }]
     });
 
-    require(["eagle/MapManager"], function (MapManager) {
+    require(["joosh/MapManager"], function (MapManager) {
 
         function getParameterByName(name) {
             name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");

@@ -93,8 +93,8 @@
   <ItemGroup>
     <Content Include="content\app.css" />
     <Content Include="content\modal.css" />
-    <Content Include="scripts\eagle\MapManager.js" />
-    <Content Include="scripts\eagle\PopupManager.js" />
+    <Content Include="scripts\joosh\MapManager.js" />
+    <Content Include="scripts\joosh\PopupManager.js" />
     <Content Include="scripts\run.js" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -130,6 +130,7 @@
       <BrowseToURL>~/</BrowseToURL>
     </Content>
     <Content Include="Views\Codes\500.cshtml" />
+    <None Include="Properties\PublishProfiles\arcmap.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

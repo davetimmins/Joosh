@@ -13,7 +13,7 @@
         'esri/request',
         'esri/urlUtils',
         'esri/tasks/GeometryService',
-        'eagle/MapManager',
+        'joosh/MapManager',
         'dojo/dom',
         'dojo/domReady!'
     ], function (
@@ -108,8 +108,8 @@
                             searchDelay: 100,
                             arcgisGeocoder: false,
                             geocoders: [{
-                                url: 'http://localhost:63037/GeocodeServer',
-                                name: "Eagle Unified Search",
+                                url: appConfig.geocoderUrl,
+                                name: "Unified Search",
                                 singleLineFieldName: "SingleLine",
                                 placeholder: "Search cities...",
                             }]
@@ -124,7 +124,7 @@
                 });
 
                 if (MapManager.popupLayers.length > 0 && MapManager.popupLayers[MapManager.popupLayers.length - 1].options.popups) {
-                    require(['eagle/PopupManager'], function (PopupManager) {
+                    require(['joosh/PopupManager'], function (PopupManager) {
                         MapManager.contentTemplate = MapManager.popupLayers[MapManager.popupLayers.length - 1].options.popups[0].content;
                         MapManager.popupManager = new PopupManager({ opLayers: MapManager.popupLayers });
                         MapManager.popupManager.initialisePopupManager();
@@ -146,7 +146,7 @@
             loadFromService: function (configName) {
 
                 var requestParams = {
-                    url: config.contextPath + '/map/' + configName,
+                    url: appConfig.contextPath + '/map/' + configName,
                     headers: { 'Accept': 'application/json' },
                     handleAs: 'json'
                 };
