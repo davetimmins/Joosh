@@ -4,7 +4,7 @@
 	"spatialReference":{"wkid":102100}},
 "options":{"zoom":4},
 "proxyRules":[
-{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions", "proxyUrl":"/proxy"},
+{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer", "proxyUrl":"/proxy"},
 {"urlPrefix":"http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer", "proxyUrl":"/proxyPrint"}
 ],
 "printTask":{"url":"http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task","options":{"async":false}},

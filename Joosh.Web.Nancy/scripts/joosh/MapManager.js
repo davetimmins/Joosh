@@ -121,7 +121,7 @@ define([
                                     url: appConfig.geocoderUrl,
                                     name: "Unified Search",
                                     singleLineFieldName: "SingleLine",
-                                    placeholder: "Search cities...",
+                                    placeholder: "Search trails...",
                                 }]
                             }, "geocoder");
                             geocoder.startup();

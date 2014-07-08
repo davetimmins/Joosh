@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.UnifiedSearch", "Joos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Proxy", "Joosh.Proxy\Joosh.Proxy.csproj", "{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Model", "Joosh.Model2\Joosh.Model.csproj", "{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,10 +31,6 @@ Global
 		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

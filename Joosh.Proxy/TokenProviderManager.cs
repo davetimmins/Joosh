@@ -83,17 +83,12 @@ namespace Joosh.Proxy
                         startIndex += result.IndexOf(matchValue, startIndex + result.IndexOf(matchStart) + matchValue.Length);
                         if (startIndex > -1)
                         {
-                            if (String.Equals(matchValue, FeatureServerMatch, StringComparison.OrdinalIgnoreCase))
-                            {
-                                // need to account for layer id
-                                var end = result.IndexOf("\"", startIndex);
-                                var sanityCheck = result.SafeSubstring(startIndex + (end - startIndex) - (("?token=" + token.Value).Length), "?token=".Length);
-                                if (!String.Equals(sanityCheck, "?token=", StringComparison.OrdinalIgnoreCase))
-                                    result = result.Insert(startIndex + (end - startIndex), "?token=" + token.Value);
-                                startIndex += (end - startIndex);
-                            }
-                            else
-                                result = result.Insert(startIndex + matchValue.Length, "?token=" + token.Value);
+                            // need to account for layer id
+                            var end = result.IndexOf("\"", startIndex);
+                            var sanityCheck = result.SafeSubstring(startIndex + (end - startIndex) - (("?token=" + token.Value).Length), "?token=".Length);
+                            if (!String.Equals(sanityCheck, "?token=", StringComparison.OrdinalIgnoreCase))
+                                result = result.Insert(startIndex + (end - startIndex), "?token=" + token.Value);
+                            startIndex += (end - startIndex);
                         }
                     }
                 }

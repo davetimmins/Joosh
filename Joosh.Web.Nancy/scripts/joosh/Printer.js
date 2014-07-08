@@ -33,8 +33,8 @@
                         window.open(result.result.url);
                     });
 
-                    this.printTask.on('error', function (error) {
-                        alert(error.message);
+                    this.printTask.on('error', function (result) {
+                        alert(result.error.details[0]);
                     });
 
                     on(this.srcNodeRef, 'click', lang.hitch(this, this._print));
