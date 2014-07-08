@@ -9,6 +9,8 @@ using Nancy.Conventions;
 using Nancy.Diagnostics;
 using Nancy.Pile;
 using Nancy.TinyIoc;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Serialization;
 using Owin;
 using System;
 
@@ -32,10 +34,7 @@ namespace Joosh.Web
 
             base.ApplicationStartup(container, pipelines);
 
-            ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
-            ServiceStack.Text.JsConfig.IncludeTypeInfo = false;
-           // ServiceStack.Text.JsConfig.ConvertObjectTypesIntoStringDictionary = true;
-          //  ServiceStack.Text.JsConfig.IncludeNullValues = false;
+            container.Register(typeof(JsonSerializer), typeof(CustomJsonSerializer));
 
             container.Register<HomeModule, HomeModule>();
             container.Register<ConfigurationModule, ConfigurationModule>();
@@ -85,4 +84,18 @@ namespace Joosh.Web
                 });
         }
     }
+
+    public class CustomJsonSerializer : JsonSerializer
+    {
+        public CustomJsonSerializer()
+        {
+            ContractResolver = new CamelCasePropertyNamesContractResolver();
+            MissingMemberHandling = Newtonsoft.Json.MissingMemberHandling.Ignore;
+            NullValueHandling = Newtonsoft.Json.NullValueHandling.Ignore;
+#if DEBUG
+            Formatting = Formatting.Indented;
+#endif
+        }
+    }
+
 }

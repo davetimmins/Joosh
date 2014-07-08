@@ -9,11 +9,11 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Threading.Tasks;
 using System.Net.Http;
-using ServiceStack.Text;
 using System.Threading;
 using System.Diagnostics;
 using System.Collections.Concurrent;
 using Joosh.Proxy;
+using Newtonsoft.Json;
 
 namespace Joosh.UnifiedSearch
 {
@@ -27,7 +27,7 @@ namespace Joosh.UnifiedSearch
         public SearchModule(IRootPathProvider pathProvider, ProxyModule proxyModule)
         {
             _pathProvider = pathProvider;
-            ArcGIS.ServiceModel.Serializers.ServiceStackSerializer.Init();
+            ArcGIS.ServiceModel.Serializers.JsonDotNetSerializer.Init();
             _proxyModule = proxyModule;
 
             // Used by ArcGIS Online when adding this service as a custom locator it does a check that it is a valid Esri locator
@@ -152,7 +152,7 @@ namespace Joosh.UnifiedSearch
 
             if (!String.IsNullOrWhiteSpace(outSR))
             {
-                var sr = JsonSerializer.DeserializeFromString<SpatialReference>(outSR);
+                var sr = JsonConvert.DeserializeObject<SpatialReference>(outSR);
                 wkid = sr.LatestWkid ?? sr.Wkid;
             }
             if (String.IsNullOrWhiteSpace(queryString)) return null;
@@ -167,7 +167,7 @@ namespace Joosh.UnifiedSearch
             // convert results to SingleInputCustomGeocodeResponse since that is what the Esri control expects
             foreach (var result in results)
             {
-                var candidate = new Candidate { Score = 100, Attributes = new Dictionary<String, object> { { "Loc_name", "Eagle Unified Search" } } };
+                var candidate = new Candidate { Score = 100, Attributes = new Dictionary<String, object> { { "Loc_name", "Joosh Unified Search" } } };
                 Dictionary<String, object> resultAttributes = result.Attributes;
                 candidate.Location = result.Geometry.GetCenter();
                 candidate.Address = resultAttributes[searchConfig.ReturnFields.Intersect(resultAttributes.Select(r => r.Key)).FirstOrDefault()].ToString();
@@ -213,7 +213,7 @@ namespace Joosh.UnifiedSearch
             var configFile = new FileInfo(Path.Combine(_pathProvider.GetRootPath(), "bin", "Json", "searchConfig.json"));
             if (!configFile.Exists) throw new FileNotFoundException(configFile.Name);
             String json = File.ReadAllText(configFile.FullName);
-            result = JsonSerializer.DeserializeFromString<Joosh.Model.SearchConfigurationData>(json);
+            result = JsonConvert.DeserializeObject<Joosh.Model.SearchConfigurationData>(json);
             if (_configurationData.TryAdd("searchConfig", result)) return result;
 
             return null;

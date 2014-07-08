@@ -1,5 +1,5 @@
 {"providers":[
-	{"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer",
+	{"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions",
 	"user":"rick",
 	"pw":"rick@esri"}
 ]}

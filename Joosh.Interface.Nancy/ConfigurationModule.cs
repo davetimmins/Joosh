@@ -27,7 +27,7 @@ namespace Joosh.MapConfig
                 if (String.IsNullOrWhiteSpace(json))
                     return HttpStatusCode.InternalServerError;
 
-                result = ServiceStack.Text.JsonSerializer.DeserializeFromString<MapConfigurationData>(json);
+                result = Newtonsoft.Json.JsonConvert.DeserializeObject<MapConfigurationData>(json);
                 if (_configurationData.TryAdd(req.Role, result)) return Response.AsJson<MapConfigurationData>(result);
 
                 return null;

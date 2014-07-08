@@ -1,6 +1,7 @@
 ﻿using ArcGIS.ServiceModel;
 using ArcGIS.ServiceModel.Operation;
-using ServiceStack.Text;
+using Nancy.Helpers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -23,14 +24,12 @@ namespace Joosh.Proxy
 
         public TokenProviderManager(String rootPath)
         {
-            ArcGIS.ServiceModel.Serializers.ServiceStackSerializer.Init();
-
             var configFile = new FileInfo(Path.Combine(rootPath, "bin", "Json", "tokenProviderConfig.json"));
             if (!configFile.Exists) throw new FileNotFoundException(configFile.Name);
             String json = File.ReadAllText(configFile.FullName);
             if (String.IsNullOrWhiteSpace(json))
                 throw new InvalidDataException("No data exists for token provider configuration at bin/Json/tokenProviderConfig.json");
-            _config = JsonSerializer.DeserializeFromString<TokenProviderConfiguration>(json);
+            _config = JsonConvert.DeserializeObject<TokenProviderConfiguration>(json);
             foreach (var tp in _config.Providers)
             {
                 ResolveTokenProvider(tp.Url);
@@ -41,7 +40,7 @@ namespace Joosh.Proxy
         {
             if (String.IsNullOrWhiteSpace(url)) return null;
 
-            var tokenProvider = ResolveTokenProvider(url.UrlDecode());
+            var tokenProvider = ResolveTokenProvider(HttpUtility.UrlDecode(url));
             if (tokenProvider == null) return null;
 
             var token = await tokenProvider.CheckGenerateToken(System.Threading.CancellationToken.None);
@@ -55,7 +54,7 @@ namespace Joosh.Proxy
                 if (e == null) return;
                 GenerateToken(e.ToString());
             },
-            url.UrlDecode(), ((int)expiryDate.Subtract(DateTime.UtcNow).TotalMilliseconds) + 1, System.Threading.Timeout.Infinite);
+            HttpUtility.UrlDecode(url), ((int)expiryDate.Subtract(DateTime.UtcNow).TotalMilliseconds) + 1, System.Threading.Timeout.Infinite);
 
             return token;
         }
@@ -69,7 +68,7 @@ namespace Joosh.Proxy
             var result = partToReplace.Clone().ToString();
             foreach (var provider in _tokenProviders)
             {
-                var matchStart = (provider.Key.IndexOf('?') > -1) ? provider.Key.SafeSubstring(0, provider.Key.IndexOf('?')) : provider.Key;
+                var matchStart = (provider.Key.IndexOf('?') > -1) ? provider.Key.Substring(0, provider.Key.IndexOf('?')) : provider.Key;
                 if (!result.Contains(matchStart)) continue;
                 var token = await GenerateToken(provider.Key);
 
@@ -96,17 +95,16 @@ namespace Joosh.Proxy
 
             foreach (var matchValue in MatchTests)
             {
-                if (url.IndexOf(matchValue) > -1) url = url.SafeSubstring(0, url.IndexOf(matchValue) + matchValue.Length);
+                if (url.IndexOf(matchValue) > -1) url = url.Substring(0, url.IndexOf(matchValue) + matchValue.Length);
             }
 
             Debug.WriteLine("token provider url truncated to " + url);
             ProxyTokenProvider tokenProvider;
             if (_tokenProviders.TryGetValue(url, out tokenProvider)) return tokenProvider;
 
-            var config = _config.Providers.FirstOrDefault(c => url.StartsWithIgnoreCase(c.Url));
+            var config = _config.Providers.FirstOrDefault(c => url.ToLower().StartsWith(c.Url.ToLower()));
             if (config == null) return null;
 
-            Debug.WriteLine(config.Dump());
             tokenProvider = new ProxyTokenProvider(config);
             Debug.WriteLine("Created TokenProvider for url " + url);
             if (_tokenProviders.TryAdd(url, tokenProvider)) return tokenProvider;

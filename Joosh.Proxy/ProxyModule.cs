@@ -1,5 +1,6 @@
 ﻿using ArcGIS.ServiceModel.Operation;
 using Nancy;
+using Newtonsoft.Json.Linq;
 using ServiceStack.Text;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Joosh.Proxy
 
         public ProxyModule(IRootPathProvider pathProvider)
         {
-            ArcGIS.ServiceModel.Serializers.ServiceStackSerializer.Init();
+            ArcGIS.ServiceModel.Serializers.JsonDotNetSerializer.Init();
             _tokenProviderManager = new TokenProviderManager(pathProvider.GetRootPath());
 
             Post[@"/getToken/{UrlForToken}", true] = async (x, ct) =>
@@ -160,7 +161,7 @@ namespace Joosh.Proxy
             if (same) return result;
             // if we get this far then we want jsonp so use Response.AsJson
             result = result.Substring(result.IndexOf('(') + 1).TrimEnd(new[] { ';', ')' });
-            var obj = TypeSerializer.DeserializeFromString<JsonObject>(result);
+            var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<JObject>(result);
             return Response.AsJson(obj);
         }
     }

@@ -7,8 +7,8 @@ using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Threading;
-using ServiceStack.Text;
 using Joosh.Proxy;
+using Newtonsoft.Json;
 
 namespace Joosh.UnifiedSearch
 {
@@ -46,8 +46,8 @@ namespace Joosh.UnifiedSearch
 
             foreach (var result in response.Results.Where(r => r.Geometry != null))
             {
-                result.Geometry = JsonSerializer.DeserializeFromString(
-                    JsonSerializer.SerializeToString(result.Geometry),
+                result.Geometry = JsonConvert.DeserializeObject(
+                    JsonConvert.SerializeObject(result.Geometry),
                     TypeMap[result.GeometryType]());
 
                 (result.Geometry as IGeometry).SpatialReference = findOptions.OutputSpatialReference;

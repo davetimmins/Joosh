@@ -36,14 +36,15 @@
     <Reference Include="ArcGIS.ServiceModel.NET">
       <HintPath>..\packages\ArcGIS.PCL.4.0.0\lib\net45\ArcGIS.ServiceModel.NET.dll</HintPath>
     </Reference>
-    <Reference Include="ArcGIS.ServiceModel.Serializers.ServiceStackV3">
-      <HintPath>..\packages\ArcGIS.PCL.ServiceStackV3Serializer.1.0.0\lib\ArcGIS.ServiceModel.Serializers.ServiceStackV3.dll</HintPath>
+    <Reference Include="ArcGIS.ServiceModel.Serializers.JsonDotNet">
+      <HintPath>..\packages\ArcGIS.PCL.JsonDotNetSerializer.1.0.0\lib\ArcGIS.ServiceModel.Serializers.JsonDotNet.dll</HintPath>
     </Reference>
     <Reference Include="Nancy">
       <HintPath>..\packages\Nancy.0.23.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
-    <Reference Include="ServiceStack.Text">
-      <HintPath>..\packages\ServiceStack.Text.3.9.71\lib\net35\ServiceStack.Text.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

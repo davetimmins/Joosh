@@ -4,11 +4,24 @@
 	"spatialReference":{"wkid":102100}},
 "options":{"zoom":4},
 "proxyRules":[
-{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer", "proxyUrl":"/proxy"}
+{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions", "proxyUrl":"/proxy"}
 ],
 "layers":[
 	{"type":"ArcGISTiledMapServiceLayer",
 	"url":"http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"},
+	{"type":"ArcGISTiledMapServiceLayer",
+	"url":"http://services.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Tapestry/MapServer",
+	"options":{
+		"id":"\"Demographics\"",
+		"opacity":0.25,
+		"visible":true,
+		"popups":[{
+			"title":"State",
+			"content":"${NAME}",
+			"layer":4
+		}]
+		}
+	},
 	{"type":"ArcGISDynamicMapServiceLayer",
 	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/Trails/MapServer",
 	"options":{
@@ -20,9 +33,11 @@
 			"content":"${trail_name}",
 			"layer":1
 		}]}
-		},
-		{"type":"ArcGISDynamicMapServiceLayer",
-	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer"}
+		},		
+		{"type":"FeatureLayer",
+	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/FeatureServer/0",
+	"options":{"outFields":["*"]
+}}
 	]
 }
   
