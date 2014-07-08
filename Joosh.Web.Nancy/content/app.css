@@ -176,3 +176,18 @@ html, button, input, select, textarea {
         content: '\f124';
         color: #808080;
     }
+
+#print-button {
+    color: #808080;
+    position: absolute;
+    top: 190px;
+    left: 20px;
+    z-index: 50;
+    cursor: pointer;
+}
+
+    #print-button:before {
+        font-family: FontAwesome;
+        font-size: 1.8em;
+        content: '\f02f';
+    }

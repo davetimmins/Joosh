@@ -128,6 +128,15 @@ define([
                         });
                     }
 
+                    if (dom.byId('print-button')) {
+                        require(['joosh/Printer', 'esri/tasks/PrintTask'], function (Printer, PrintTask) {
+                            var printer = new Printer({
+                                map: this.map
+                            }, "print-button");
+                            printer.initialise(new PrintTask(config.printTask.url, config.printTask.options));
+                        });
+                    }
+
                     var scalebar = new Scalebar({
                         map: this.map,
                         scalebarUnit: 'dual'

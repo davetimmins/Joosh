@@ -71,13 +71,13 @@ namespace Joosh.Web
             nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("images"));
             nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("scripts"));
 
-            nancyConventions.StaticContentsConventions.AddStylesBundle("styles.css", true,
+            nancyConventions.StaticContentsConventions.StyleBundle("styles.css", true,
                 new[]
                 {
                     "content/*.css"
                 });
 
-            nancyConventions.StaticContentsConventions.AddScriptsBundle("scripts.js", true,
+            nancyConventions.StaticContentsConventions.ScriptBundle("scripts.js", true,
                 new[]
                 {
                     "scripts/run.js"

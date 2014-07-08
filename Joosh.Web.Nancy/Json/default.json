@@ -4,8 +4,10 @@
 	"spatialReference":{"wkid":102100}},
 "options":{"zoom":4},
 "proxyRules":[
-{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions", "proxyUrl":"/proxy"}
+{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions", "proxyUrl":"/proxy"},
+{"urlPrefix":"http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer", "proxyUrl":"/proxyPrint"}
 ],
+"printTask":{"url":"http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task","options":{"async":false}},
 "layers":[
 	{"type":"ArcGISTiledMapServiceLayer",
 	"url":"http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"},
@@ -26,7 +28,7 @@
 	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/Trails/MapServer",
 	"options":{
 		"id":"\"San Juan Trails\"",
-		"opacity":0.85,
+		"opacity":0.65,
 		"visible":true,
 		"popups":[{
 			"title":"Trail name",
@@ -34,10 +36,9 @@
 			"layer":1
 		}]}
 		},		
-		{"type":"FeatureLayer",
-	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/FeatureServer/0",
-	"options":{"outFields":["*"]
-}}
+		{"type":"ArcGISDynamicMapServiceLayer",
+	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer"
+}
 	]
 }
   

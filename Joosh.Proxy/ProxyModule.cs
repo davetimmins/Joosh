@@ -123,8 +123,8 @@ namespace Joosh.Proxy
             if (!url.Contains("token="))
             {
                 var token = await GenerateToken(url);
-                if (token == null) throw new InvalidOperationException("No token generated for '{0}'".Fmt(url));
-                url += url.Contains("?") ? "&token=" + token.Value : "?token=" + token.Value;
+                if (token != null)
+                    url += url.Contains("?") ? "&token=" + token.Value : "?token=" + token.Value;
             }
 
             switch (format)
@@ -148,7 +148,7 @@ namespace Joosh.Proxy
             if (data == null) return null;
 
             String url = data.Keys.ToArray()[0].UrlDecode();
-            return url.Substring(0, url.IndexOf("?"));
+            return (url.IndexOf("?") > -1) ? url.SafeSubstring(0, url.IndexOf("?")) : url;
         }
 
         Response StripDuplicateCallback(String result, String match)
@@ -160,7 +160,7 @@ namespace Joosh.Proxy
             var same = firstIndex != result.LastIndexOf(match) && firstIndex != -1;
             if (same) return result;
             // if we get this far then we want jsonp so use Response.AsJson
-            result = result.Substring(result.IndexOf('(') + 1).TrimEnd(new[] { ';', ')' });
+            result = result.SafeSubstring(result.IndexOf('(') + 1).TrimEnd(new[] { ';', ')' });
             var obj = Newtonsoft.Json.JsonConvert.DeserializeObject<JObject>(result);
             return Response.AsJson(obj);
         }

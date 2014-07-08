@@ -38,8 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AjaxMin">
-      <HintPath>..\packages\AjaxMin.5.10.5260.16959\lib\net40\AjaxMin.dll</HintPath>
+    <Reference Include="AjaxMin, Version=5.11.5295.12304, Culture=neutral, PublicKeyToken=21ef50ce11b5d80f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AjaxMin.5.11.5295.12309\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin">
@@ -54,8 +55,9 @@
     <Reference Include="Nancy.Owin">
       <HintPath>..\packages\Nancy.Owin.0.23.0\lib\net40\Nancy.Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Pile">
-      <HintPath>..\packages\Nancy.Pile.0.1.0.0\lib\net45\Nancy.Pile.dll</HintPath>
+    <Reference Include="Nancy.Pile, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.Pile.0.3.1.0\lib\net45\Nancy.Pile.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Serialization.JsonNet">
       <HintPath>..\packages\Nancy.Serialization.JsonNet.0.23.0\lib\net40\Nancy.Serialization.JsonNet.dll</HintPath>
@@ -96,6 +98,7 @@
     <Content Include="content\modal.css" />
     <Content Include="scripts\joosh\MapManager.js" />
     <Content Include="scripts\joosh\PopupManager.js" />
+    <Content Include="scripts\joosh\Printer.js" />
     <Content Include="scripts\run.js" />
     <Content Include="Web.config" />
   </ItemGroup>

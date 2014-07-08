@@ -2,6 +2,7 @@
 using ArcGIS.ServiceModel.Operation;
 using Nancy.Helpers;
 using Newtonsoft.Json;
+using ServiceStack.Text;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -68,7 +69,7 @@ namespace Joosh.Proxy
             var result = partToReplace.Clone().ToString();
             foreach (var provider in _tokenProviders)
             {
-                var matchStart = (provider.Key.IndexOf('?') > -1) ? provider.Key.Substring(0, provider.Key.IndexOf('?')) : provider.Key;
+                var matchStart = (provider.Key.IndexOf('?') > -1) ? provider.Key.SafeSubstring(0, provider.Key.IndexOf('?')) : provider.Key;
                 if (!result.Contains(matchStart)) continue;
                 var token = await GenerateToken(provider.Key);
 
@@ -77,10 +78,23 @@ namespace Joosh.Proxy
                 foreach (var matchValue in MatchTests)
                 {
                     var startIndex = 0;
-                    while (result.IndexOf(matchStart, startIndex) > -1 && result.IndexOf(matchValue, startIndex) > -1)
+                    while (startIndex > -1 && result.IndexOf(matchStart, startIndex) > -1 && result.IndexOf(matchValue, startIndex) > -1)
                     {
                         startIndex += result.IndexOf(matchValue, startIndex + result.IndexOf(matchStart) + matchValue.Length);
-                        result = result.Insert(startIndex + matchValue.Length, "?token=" + token.Value);
+                        if (startIndex > -1)
+                        {
+                            if (String.Equals(matchValue, FeatureServerMatch, StringComparison.OrdinalIgnoreCase))
+                            {
+                                // need to account for layer id
+                                var end = result.IndexOf("\"", startIndex);
+                                var sanityCheck = result.SafeSubstring(startIndex + (end - startIndex) - (("?token=" + token.Value).Length), "?token=".Length);
+                                if (!String.Equals(sanityCheck, "?token=", StringComparison.OrdinalIgnoreCase))
+                                    result = result.Insert(startIndex + (end - startIndex), "?token=" + token.Value);
+                                startIndex += (end - startIndex);
+                            }
+                            else
+                                result = result.Insert(startIndex + matchValue.Length, "?token=" + token.Value);
+                        }
                     }
                 }
             }
@@ -95,7 +109,7 @@ namespace Joosh.Proxy
 
             foreach (var matchValue in MatchTests)
             {
-                if (url.IndexOf(matchValue) > -1) url = url.Substring(0, url.IndexOf(matchValue) + matchValue.Length);
+                if (url.IndexOf(matchValue) > -1) url = url.SafeSubstring(0, url.IndexOf(matchValue) + matchValue.Length);
             }
 
             Debug.WriteLine("token provider url truncated to " + url);
