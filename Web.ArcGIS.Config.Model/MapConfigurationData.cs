@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ServiceStack.Text;
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -10,7 +11,7 @@ namespace Joosh.Model
 
         public Extent Extent { get; set; }
 
-        public dynamic Options { get; set; }
+        public JsonObject Options { get; set; }
 
         public String GeometryServiceUrl { get; set; }
 
@@ -45,7 +46,7 @@ namespace Joosh.Model
 
         public String Url { get; set; }
 
-        public dynamic Options { get; set; }
+        public JsonObject Options { get; set; }
     }
 
     public static class MapLayerType
@@ -84,6 +85,6 @@ namespace Joosh.Model
     {
         public String Url { get; set; }
 
-        public dynamic Options { get; set; }
+        public JsonObject Options { get; set; }
     }
 }

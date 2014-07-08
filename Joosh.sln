@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Model", "Web.ArcGIS.Config.Model\Joosh.Model.csproj", "{130892AD-CA91-4E4A-A284-A367B0892112}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.MapConfig", "Joosh.Interface.Nancy\Joosh.MapConfig.csproj", "{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Web", "Joosh.Web.Nancy\Joosh.Web.csproj", "{5B543C77-C124-4424-8B51-9B0D2915AB57}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.UnifiedSearch", "Joosh.Nancy.UnifiedSearch\Joosh.UnifiedSearch.csproj", "{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Proxy", "Joosh.Proxy\Joosh.Proxy.csproj", "{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joosh.Model", "Joosh.Model2\Joosh.Model.csproj", "{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +17,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{130892AD-CA91-4E4A-A284-A367B0892112}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{130892AD-CA91-4E4A-A284-A367B0892112}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{130892AD-CA91-4E4A-A284-A367B0892112}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{130892AD-CA91-4E4A-A284-A367B0892112}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C73A276-1A6F-4526-B9E8-1FD77C02BBAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -31,6 +29,14 @@ Global
 		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B3D19BFF-BC0C-40EE-BD88-04083469D1F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D198118-0FE3-4664-BA7D-4CBF8CFBC818}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F148410-ADA5-4F85-9AEB-E7BC9D36853B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

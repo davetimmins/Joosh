@@ -13,6 +13,7 @@ using ServiceStack.Text;
 using System.Threading;
 using System.Diagnostics;
 using System.Collections.Concurrent;
+using Joosh.Proxy;
 
 namespace Joosh.UnifiedSearch
 {
@@ -21,11 +22,14 @@ namespace Joosh.UnifiedSearch
         readonly IRootPathProvider _pathProvider;
         static ConcurrentDictionary<String, ArcGISGateway> _arcGISGateways = new ConcurrentDictionary<String, ArcGISGateway>();
         ConcurrentDictionary<String, Joosh.Model.SearchConfigurationData> _configurationData = new ConcurrentDictionary<String, Joosh.Model.SearchConfigurationData>();
+        ProxyModule _proxyModule;
 
-        public SearchModule(IRootPathProvider pathProvider)
+        public SearchModule(IRootPathProvider pathProvider, ProxyModule proxyModule)
         {
             _pathProvider = pathProvider;
             ArcGIS.ServiceModel.Serializers.ServiceStackSerializer.Init();
+            _proxyModule = proxyModule;
+
             // Used by ArcGIS Online when adding this service as a custom locator it does a check that it is a valid Esri locator
             // so we will cheat and just return one that we know works
             Get[@"/GeocodeServer", true] = async (x, ct) =>
@@ -223,7 +227,7 @@ namespace Joosh.UnifiedSearch
             ArcGISGateway arcGISGateway;
             if (_arcGISGateways.TryGetValue(url, out arcGISGateway)) return arcGISGateway;
 
-            arcGISGateway = new ArcGISGateway(url);
+            arcGISGateway = new ArcGISGateway(url, _proxyModule);
             Debug.WriteLine("Created ArcGISGateway for url " + url);
             if (_arcGISGateways.TryAdd(url, arcGISGateway)) return arcGISGateway;
 

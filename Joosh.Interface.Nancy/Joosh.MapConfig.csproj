@@ -54,8 +54,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Web.ArcGIS.Config.Model\Joosh.Model.csproj">
-      <Project>{130892ad-ca91-4e4a-a284-a367b0892112}</Project>
+    <ProjectReference Include="..\Joosh.Model2\Joosh.Model.csproj">
+      <Project>{1f148410-ada5-4f85-9aeb-e7bc9d36853b}</Project>
       <Name>Joosh.Model</Name>
     </ProjectReference>
   </ItemGroup>

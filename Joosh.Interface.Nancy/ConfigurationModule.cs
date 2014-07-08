@@ -28,7 +28,7 @@ namespace Joosh.MapConfig
                     return HttpStatusCode.InternalServerError;
 
                 result = ServiceStack.Text.JsonSerializer.DeserializeFromString<MapConfigurationData>(json);
-                if (_configurationData.TryAdd(req.Role, result)) return result;
+                if (_configurationData.TryAdd(req.Role, result)) return Response.AsJson<MapConfigurationData>(result);
 
                 return null;
             };

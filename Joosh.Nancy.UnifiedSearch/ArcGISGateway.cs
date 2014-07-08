@@ -8,17 +8,39 @@ using System.Runtime.Serialization;
 using System.Threading.Tasks;
 using System.Threading;
 using ServiceStack.Text;
+using Joosh.Proxy;
 
 namespace Joosh.UnifiedSearch
 {
     internal sealed class ArcGISGateway : PortalGateway
     {
-        public ArcGISGateway(String serviceUrl)
+        ProxyModule _proxyModule;
+
+        public ArcGISGateway(String serviceUrl, ProxyModule proxyModule = null)
             : base(serviceUrl)
-        { }
+        {
+            _proxyModule = proxyModule;
+        }
+
+        public override async Task<QueryResponse<T>> Query<T>(Query queryOptions, CancellationToken ct)
+        {
+            if (_proxyModule != null && String.IsNullOrWhiteSpace(queryOptions.Token))
+            {
+                var token = await _proxyModule.GenerateToken(queryOptions.BuildAbsoluteUrl(this.RootUrl));
+                if (token != null) queryOptions.Token = token.Value;
+            }
+
+            return await Get<QueryResponse<T>, Query>(queryOptions, ct);
+        }
 
         public async Task<FindResponse> DoFind(Find findOptions, CancellationToken ct)
         {
+            if (_proxyModule != null && String.IsNullOrWhiteSpace(findOptions.Token))
+            {
+                var token = await _proxyModule.GenerateToken(findOptions.BuildAbsoluteUrl(this.RootUrl));
+                if (token != null) findOptions.Token = token.Value;
+            }
+
             var response = await Get<FindResponse, Find>(findOptions, ct);
             if (ct.IsCancellationRequested || response == null || response.Results == null || !response.Results.Any()) return null;
 

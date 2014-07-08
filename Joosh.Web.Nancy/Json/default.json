@@ -1,28 +1,29 @@
-{
-"id":2,
-"role":"operational",
+ {
+"role":"default",
 "extent":{"xmin":-16803916.2982087,"ymin":562576.528178748,"xmax":-4231553.88586623,"ymax":7929883.06241522,
 	"spatialReference":{"wkid":102100}},
 "options":{"zoom":4},
+"proxyRules":[
+{"urlPrefix":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer", "proxyUrl":"/proxy"}
+],
 "layers":[
 	{"type":"ArcGISTiledMapServiceLayer",
 	"url":"http://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer"},
-	{"type":"ArcGISTiledMapServiceLayer",
-	"url":"http://services.arcgisonline.com/ArcGIS/rest/services/Demographics/USA_Tapestry/MapServer",
+	{"type":"ArcGISDynamicMapServiceLayer",
+	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/Trails/MapServer",
 	"options":{
-		"id":"\"Demographics\"",
-		"opacity":0.25,
+		"id":"\"San Juan Trails\"",
+		"opacity":0.85,
 		"visible":true,
 		"popups":[{
-			"title":"State",
-			"content":"${NAME}",
-			"layer":4
-		}]
-		}
-	},
-	{"type":"ArcGISDynamicMapServiceLayer",
-	"url":"http://services.arcgisonline.co.nz/arcgis/rest/services/STATS/territorialauthorities/MapServer",
-	"options":{"id":"\"Data layer\""}}
+			"title":"Trail name",
+			"content":"${trail_name}",
+			"layer":1
+		}]}
+		},
+		{"type":"ArcGISDynamicMapServiceLayer",
+	"url":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer"}
 	]
 }
   
+

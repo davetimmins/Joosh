@@ -130,6 +130,9 @@
       <BrowseToURL>~/</BrowseToURL>
     </Content>
     <Content Include="Views\Codes\500.cshtml" />
+    <Content Include="Json\tokenProviderConfig.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\arcmap.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -146,6 +149,10 @@
     <ProjectReference Include="..\Joosh.Nancy.UnifiedSearch\Joosh.UnifiedSearch.csproj">
       <Project>{b3d19bff-bc0c-40ee-bd88-04083469d1f1}</Project>
       <Name>Joosh.UnifiedSearch</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Joosh.Proxy\Joosh.Proxy.csproj">
+      <Project>{3d198118-0fe3-4664-ba7d-4cbf8cfbc818}</Project>
+      <Name>Joosh.Proxy</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

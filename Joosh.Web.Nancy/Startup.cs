@@ -1,4 +1,5 @@
 ﻿using Joosh.MapConfig;
+using Joosh.Proxy;
 using Joosh.UnifiedSearch;
 using Joosh.Web.Modules;
 using Microsoft.Owin.Extensions;
@@ -33,11 +34,12 @@ namespace Joosh.Web
 
             ServiceStack.Text.JsConfig.EmitCamelCaseNames = true;
             ServiceStack.Text.JsConfig.IncludeTypeInfo = false;
-            ServiceStack.Text.JsConfig.ConvertObjectTypesIntoStringDictionary = true;
-            ServiceStack.Text.JsConfig.IncludeNullValues = false;
+           // ServiceStack.Text.JsConfig.ConvertObjectTypesIntoStringDictionary = true;
+          //  ServiceStack.Text.JsConfig.IncludeNullValues = false;
 
             container.Register<HomeModule, HomeModule>();
             container.Register<ConfigurationModule, ConfigurationModule>();
+            container.Register<ProxyModule, ProxyModule>();
             container.Register<SearchModule, SearchModule>();
 
 #if !DEBUG

@@ -1,7 +1,8 @@
 ﻿{
-"querySearches":[],
-"findSearches":[
-	{"endpoint":"http://sampleserver6.arcgisonline.com/arcgis/rest/services/SampleWorldCities/MapServer","searchFields":[],"layerIds":[0]}
-],
-"returnFields":["CITY_NAME"]
+"querySearches":[
+	{"endpoint":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/Trails/MapServer/1","expression":"trail_name LIKE '{0}%'","type":"esriGeometryPolyline"},
+	{"endpoint":"https://servicesbeta.esri.com/ArcGIS/rest/services/SanJuan/TrailConditions/MapServer/0","expression":"Condition LIKE '{0}%'","type":"esriGeometryPoint"}],
+"findSearches":[],
+"returnFields":["trail_name","Condition"],
+"outputWkid":102100
 }
