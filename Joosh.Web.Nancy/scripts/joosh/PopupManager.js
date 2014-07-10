@@ -44,6 +44,12 @@
                 if (map) {
                     this.map = map;
                     this._clickHandle = this.map.on("click", lang.hitch(this, this._executeQueries));
+                    // Popup reposition's automatically when extent changes
+                    this.map.on("extent-change", function (e) {
+                        if (this.map.infoWindow.isShowing) {
+                            this.map.infoWindow.reposition();
+                        }
+                    });
                 }
             },
 
