@@ -6,6 +6,7 @@
     "dojo/on",
     "dojo/dom-construct",
     "dojo/dom",
+    "dojo/dom-class",
     "esri/tasks/query",
     "esri/tasks/QueryTask",
     "esri/dijit/Popup",
@@ -21,6 +22,7 @@
         on,
         domConstruct,
         dom,
+        domClass,
         Query,
         QueryTask,
         Popup,
@@ -44,6 +46,7 @@
                 if (map) {
                     this.map = map;
                     this._clickHandle = this.map.on("click", lang.hitch(this, this._executeQueries));
+                    domClass.add(this.map.infoWindow.domNode, "light");
                     // Popup reposition's automatically when extent changes
                     this.map.on("extent-change", function (e) {
                         if (this.map.infoWindow.isShowing) {
