@@ -74,10 +74,6 @@ define([
                 if (config.extent)
                     this.map.setExtent(new Extent(config.extent));
 
-                require(['joosh/Bookmarker'], function (Bookmarker) {
-                    new Bookmarker({ map: this.map});
-                });
-
                 var layers = config.layers.map(function (layer) {
                     var lyr = new layerHash[layer.type](layer.url, layer.options);
                     if (layer.options) {
@@ -94,6 +90,10 @@ define([
                 });
 
                 this.map.on("layers-add-result", function (layersAdded) {
+
+                    require(['joosh/Bookmarker'], function (Bookmarker) {
+                        new Bookmarker({ map: this.map });
+                    });
 
                     if (dom.byId('home-button')) {
                         require(['esri/dijit/HomeButton'], function (HomeButton) {
