@@ -2,7 +2,7 @@
 using ArcGIS.ServiceModel.Operation;
 using Nancy.Helpers;
 using Newtonsoft.Json;
-using ServiceStack.Text;
+using ServiceStack;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

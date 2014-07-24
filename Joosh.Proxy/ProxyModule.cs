@@ -1,7 +1,7 @@
 ﻿using ArcGIS.ServiceModel.Operation;
 using Nancy;
 using Newtonsoft.Json.Linq;
-using ServiceStack.Text;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
@@ -135,7 +135,8 @@ namespace Joosh.Proxy
                     return StripDuplicateCallback(url.GetJsonFromUrl(), callback);
                 case "image":
                     String imageFormat = data["format"];
-                    return Response.FromStream(new MemoryStream(url.GetBytesFromUrl()), MimeTypes.GetMimeType("." + imageFormat.Replace("8", "").Replace("24", "").Replace("32", "")));
+                    return Response.FromStream(new MemoryStream(url.GetBytesFromUrl()), 
+                        ServiceStack.MimeTypes.GetMimeType("." + imageFormat.Replace("8", "").Replace("24", "").Replace("32", "")));
 
                 default:
                     return StripDuplicateCallback(url.GetStringFromUrl(), callback);
