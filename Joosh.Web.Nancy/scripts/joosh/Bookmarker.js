@@ -23,15 +23,17 @@
 
                     if (window.location.hash) {
                         var hashExtent = dojo.fromJson('{' + window.location.hash.replace('#', '') + '}');
-                        var savedExtent = new Extent(
-                        {
-                            xmin: hashExtent.xmin,
-                            ymin: hashExtent.ymin,
-                            xmax: hashExtent.xmax,
-                            ymax: hashExtent.ymax,
-                            spatialReference: this.map.spatialReference
-                        });
-                        this.map.setExtent(savedExtent);
+                        if (hashExtent) {
+                            var savedExtent = new Extent(
+                            {
+                                xmin: hashExtent.xmin,
+                                ymin: hashExtent.ymin,
+                                xmax: hashExtent.xmax,
+                                ymax: hashExtent.ymax,
+                                spatialReference: this.map.spatialReference
+                            });
+                            this.map.setExtent(savedExtent);
+                        }
                     }
 
                     this.map.on('extent-change', function (e) {

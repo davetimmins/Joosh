@@ -68,6 +68,7 @@ namespace Joosh.Web
             base.ConfigureConventions(nancyConventions);
 
             nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("content"));
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("extcss"));
             nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("images"));
             nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("scripts"));
 

@@ -71,7 +71,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -100,6 +100,8 @@
   <ItemGroup>
     <Content Include="content\app.css" />
     <Content Include="content\modal.css" />
+    <Content Include="extcss\gh-fork-ribbon.css" />
+    <Content Include="extcss\gh-fork-ribbon.ie.css" />
     <Content Include="scripts\joosh\Bookmarker.js" />
     <Content Include="scripts\joosh\MapManager.js" />
     <Content Include="scripts\joosh\PopupManager.js" />
@@ -147,6 +149,7 @@
     <None Include="Properties\PublishProfiles\arcmap.pubxml" />
     <None Include="Properties\PublishProfiles\joosh - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\joosh - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\joosh.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
